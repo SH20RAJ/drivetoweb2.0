@@ -14,7 +14,7 @@ if ($mysqli -> connect_errno) {
 $query = "select * from demo";
 
 $result = $mysqli->query($query);
-print_r($result[name]);
+print_r($result['name']);
 /*
 $tables = $result->fetch_all();
 
