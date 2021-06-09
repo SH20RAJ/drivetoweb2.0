@@ -8,4 +8,30 @@ if ($mysqli -> connect_errno) {
 }else{
   echo "Yep! Database Connected.";
 }
+
+// Gather all table names into an array.
+
+$query = "SHOW TABLES";
+
+$result = $mysqli->query($query);
+$tables = $result->fetch_all();
+
+// Step through the array, only accessing the first element (the table name)
+// and gather the column names in each table.
+foreach($tables as $table)
+{
+    echo "<h2>" . $table[0] . "</h2>";
+
+    $query = "DESCRIBE " . $table[0];
+    $result = $mysqli->query($query);
+
+    $columns = $result->fetch_all();
+
+    foreach($columns as $column)
+    {
+        echo $column[0] . "<br />";
+    }
+}
+
+$mysqli->close();
 ?>
