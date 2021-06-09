@@ -11,9 +11,11 @@ if ($mysqli -> connect_errno) {
 
 // Gather all table names into an array.
 
-$query = "SHOW TABLES";
+$query = "select * from demo";
 
 $result = $mysqli->query($query);
+print_r($result);
+/*
 $tables = $result->fetch_all();
 
 // Step through the array, only accessing the first element (the table name)
@@ -32,6 +34,6 @@ foreach($tables as $table)
         echo $column[0] . "<br />";
     }
 }
-
+*/
 $mysqli->close();
 ?>
